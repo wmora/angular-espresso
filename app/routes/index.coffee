@@ -11,4 +11,4 @@ exports.index = (request, response) ->
 ###
 
 exports.partials = (request, response) ->
-  response.render "/partials" + request.params.name
+  response.render "partials/" + request.params.name

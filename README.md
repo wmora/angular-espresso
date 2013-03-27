@@ -1,6 +1,6 @@
 # Angular Espresso
 
-Based on [angular-express-seed](https://github.com/btford/angular-express-seed), start an app with AngularJS on the front, Express + Node in the back, all written in CoffeeScript.
+Start an app with AngularJS on the client, Express + Node as your back-end, all written in CoffeeScript.
 
 ## Current version
 
