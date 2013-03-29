@@ -1,0 +1,12 @@
+p This is the template for view 1
+
+p Click the button to load all users
+input(type="button", ng-click="loadUsers()", value="Load!")
+
+p(ng-show="users && users.length > 1") Filter results
+  input(ng-model="narrow")
+
+ul
+  li(ng-repeat="user in users | filter: narrow")
+    p
+      a(href="#/user/{{user.id}}") {{ user | title }}

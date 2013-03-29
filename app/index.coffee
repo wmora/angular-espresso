@@ -4,8 +4,8 @@
 
 config = require "./config"
 express = require "express"
-routes = require "./routes"
 path = require "path"
+routes = require "./routes"
 
 app = express()
 
@@ -26,14 +26,36 @@ app.use app.router
 app.use express["static"] path.join process.cwd(), config.PUBLIC_PATH
 
 ###
-  Routes
+  Routes config
 ###
 
+# Views
 app.get "/", routes.index
 app.get "/partials/:name", routes.partials
 
+# Services
+users = require "./services/users"
+app.get "/users", users.list
+app.get "/users/:id", users.get
+
 ###
-  Export app
+  Server startup
 ###
 
-module.exports = app
+serverStarted = ->
+  console.log "Server listening on http://#{app.get "ipaddr"}:#{app.get "port"}"
+
+server = app.listen app.get('port'), app.get('ipaddr'), serverStarted
+
+###
+  Socket.IO registration and configuration
+###
+
+io = require("socket.io").listen server
+require("./socket").configure io
+
+###
+  Export server
+###
+
+module.exports = server

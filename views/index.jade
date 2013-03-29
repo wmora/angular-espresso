@@ -6,19 +6,24 @@ block content
   div(ng-controller='AppCtrl') Hello {{name}}
     ul.menu
       li
-        a(href='#/view1') view1
+        a(href='#/home') home
       li
-        a(href='#/view2') view2
+        a(href='#/filter') filter
+      li
+        a(href='#/socket') socket
 
     div(ng-view)
 
     div
-      | Angular seed app: v
+      | Angular Espresso app: v
       span(app-version)
 
+  script(src='/lib/socket.io.min.js')
+  script(src='/js/index.js')
   script(src='/lib/angular.min.js')
-  script(src='/js/app.js')
-  script(src='/js/services.js')
-  script(src='/js/controllers.js')
-  script(src='/js/filters.js')
-  script(src='/js/directives.js')
+  script(src='/lib/angular-resource.min.js')
+  script(src='/js/angular/app.js')
+  script(src='/js/angular/services.js')
+  script(src='/js/angular/controllers.js')
+  script(src='/js/angular/filters.js')
+  script(src='/js/angular/directives.js')
