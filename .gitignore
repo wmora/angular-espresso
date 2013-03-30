@@ -2,4 +2,5 @@
 .idea
 *.iml
 node_modules
+public/angular
 public/js
