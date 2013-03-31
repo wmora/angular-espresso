@@ -1,11 +1,34 @@
 {
   "name": "angular-espresso",
-  "version": "0.0.1",
-  "private": true,
+  "description": "A project template for an AngularJS app with an Express, Socket.IO backend written in CoffeeScript",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wmora/angular-espresso.git"
+  },
+  "author": "William Mora <william.r.mora@gmail.com>",
+  "contributors": [
+    {
+      "name": "William Mora",
+      "email": "william.r.mora@gmail.com"
+    }
+  ],
+  "keywords": [
+    "node",
+    "express",
+    "coffeescript",
+    "socket.io"
+  ],
   "dependencies": {
     "express": "3.1.0",
-    "jade": "*",
-    "socket.io": "*",
-    "undescore": "*"
+    "jade": "0.28.2",
+    "socket.io": "0.9.14",
+    "uglify-js": "2.2.5"
+  },
+  "engines": {
+    "node": ">=0.8"
+  },
+  "scripts": {
+    "start": "node app"
   }
 }
