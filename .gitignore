@@ -1,0 +1,6 @@
+.espresso
+.idea
+node_modules
+*.iml
+public/angular
+public/js
