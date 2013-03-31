@@ -5,7 +5,7 @@
 ###
 
 AppCtrl = ($scope) ->
-  $scope.name = "you"
+  $scope.name = "Espresso"
 
 AppCtrl.$inject = ["$scope"]
 
@@ -29,11 +29,9 @@ UserDetailCtrl.$inject = ["$scope", "$routeParams", "User"]
 SocketCtrl = ($scope, Socket) ->
 
   Socket.on "pong", (data) ->
-    console.log data.data
     $scope.response = data.data
 
   $scope.ping = ->
     Socket.emit("ping", {})
-
 
 SocketCtrl.$inject = ["$scope", "Socket"]

@@ -23,6 +23,7 @@ app.set "view engine", config.VIEWS_ENGINE
 app.use express.bodyParser()
 app.use express.methodOverride()
 app.use app.router
+app.use express.favicon("#{process.cwd()}/#{config.PUBLIC_PATH}/#{config.IMAGES_PATH}/favicon.ico")
 app.use express["static"] path.join process.cwd(), config.PUBLIC_PATH
 
 ###

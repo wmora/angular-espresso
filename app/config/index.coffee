@@ -8,6 +8,7 @@ exports.setEnv = (environment) ->
   exports.PUBLIC_PATH = "public"
   exports.VIEWS_ENGINE = "jade"
   exports.VIEWS_PATH = "views"
+  exports.IMAGES_PATH = "images"
 
   ###
     Environment specific config

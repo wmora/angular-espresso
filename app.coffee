@@ -1,1 +1,1 @@
-app = require("./.espresso")
+app = require "./.espresso"
