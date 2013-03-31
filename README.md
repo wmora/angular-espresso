@@ -55,7 +55,7 @@ component of your site and then use partials for all its sub-components
 In the future, I will be adding support for testing. I won't implement file watching until it is stable in node.
 
 ## Contribute
-If you want to help, you could try out the code, share the project, suggest new features, and/or submit pull requests.
+If you want to help, fork/clone/share the project, suggest new features, and/or submit pull requests.
 Contact me directly at william.r.mora@gmail.com or @wilmor24.
 
 ## Author
