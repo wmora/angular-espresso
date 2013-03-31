@@ -34,7 +34,7 @@ cake build:client         # Builds client scripts
 cake clean                # Clean module and client
 cake clean:module         # Cleans the Espresso module
 cake clean:client         # Cleans the Espresso module
-cake run                  # Builds and runs the app
+cake run                  # Runs the app (you shoud build first)
 ```
 ## Configuration
 

@@ -195,7 +195,7 @@ task "clean:client", "Cleans the Espresso module", ->
   deleteClient ->
     console.log "Client cleaned"
 
-task "run", "Builds and runs the app", ->
+task "run", "Runs the app", ->
   console.log "App running, press ^C to quit"
   exec "node app", (err, stdout, stderr) ->
     if err
