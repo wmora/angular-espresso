@@ -86,6 +86,7 @@ uglifyDirectory = (dir) ->
   console.log "Uglifying #{dir}"
 
   fs.readdir dir, (err, files) ->
+    return if err?
     for file in files
       do (file) ->
         fs.stat "#{dir}/#{file}",
@@ -171,12 +172,14 @@ task "build", "Builds app", (callback) ->
   buildServer()
 
 task "build:module", "Builds the Espresso module", ->
+  invoke "clean:module"
   console.log "Building module..."
   buildModule()
   console.log "Building server..."
   buildServer()
 
 task "build:client", "Builds client scripts", ->
+  invoke "clean:client"
   console.log "Building client..."
   buildClient()
 
