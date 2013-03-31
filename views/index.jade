@@ -1,29 +1,30 @@
 extends layout
 
 block content
-  h1 Welcome to Angular Espresso
+  div.hero-unit
 
-  div(ng-controller='AppCtrl') Hello {{name}}
-    ul.menu
-      li
-        a(href='#/home') home
-      li
-        a(href='#/filter') filter
-      li
-        a(href='#/socket') socket
+    h1 Welcome to Angular Espresso
 
-    div(ng-view)
+    div(ng-controller='AppCtrl') Hello, {{name}}
+    span Click on one of the options to test the project
+      ul.nav.nav-pills.nav-stacked
+        li
+          a(href='#/home') User listing, details
+        li
+          a(href='#/socket') Socket server
+      hr
+      div(ng-view)
 
     div
-      | Angular Espresso app: v
+      | Angular Espresso, version &nbsp;
       span(app-version)
 
-  script(src='/lib/socket.io.min.js')
-  script(src='/js/index.js')
-  script(src='/lib/angular.min.js')
-  script(src='/lib/angular-resource.min.js')
-  script(src='/js/angular/app.js')
-  script(src='/js/angular/services.js')
-  script(src='/js/angular/controllers.js')
-  script(src='/js/angular/filters.js')
-  script(src='/js/angular/directives.js')
+  script(src='/lib/bootstrap/js/bootstrap.js')
+  script(src='/lib/socket.io/socket.io.js')
+  script(src='/lib/angular/angular.js')
+  script(src='/lib/angular/angular-resource.js')
+  script(src='/angular/app.js')
+  script(src='/angular/services.js')
+  script(src='/angular/controllers.js')
+  script(src='/angular/filters.js')
+  script(src='/angular/directives.js')

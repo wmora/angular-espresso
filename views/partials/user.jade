@@ -1,5 +1,6 @@
-h1 {{user.name}}
-h2 ID: {{user.id}}
-h2
-  a(href="mailto:{{user.email}}") Email me!
+h2 {{user.name}}
+p.lead ID: {{user.id}}
+p
+  | Email: {{user.email}} &nbsp;
+  a(href="mailto:{{user.email}}") (Email me!)
 
