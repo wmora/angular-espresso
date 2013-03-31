@@ -33,15 +33,67 @@
       <section id="main_content" class="inner">
         <h1>Angular Espresso</h1>
 
-<p>Start an app with AngularJS on the client, Express + Node as your back-end, all written in CoffeeScript.</p>
+<p>Start an app with AngularJS on the client, Express + Node + Socket.IO as your back-end, all written in CoffeeScript.</p>
 
 <h2>Current version</h2>
 
-<p>Don't use this repo yet, it is not ready for production. Working on that.</p>
+<p>Current version: 0.1.0</p>
 
-<h2>Contact</h2>
+<p>This version includes the following components:</p>
+
+<ul>
+<li>AngularJS 1.0.5</li>
+<li>Twitter Bootstrap 2.3.1</li>
+<li>Express 3.1.0</li>
+<li>Socket.IO 0.9.14, client 0.9.11</li>
+<li>Jade 0.28.2</li>
+<li>UglifyJS 2.2.5</li>
+</ul><h2>Installation</h2>
+
+<p>You need to have installed node (<a href="http://nodejs.org/">http://nodejs.org/</a>) and CoffeeScript (<a href="http://coffeescript.org/">http://coffeescript.org/</a>), make sure
+you install globally</p>
+
+<p>Once you have them installed, run:</p>
+
+<blockquote>
+<p>npm install</p>
+</blockquote>
+
+<h2>Cakefile Usage</h2>
+
+<p>Once you install the dependencies, use the Cakefile for performing different actions:</p>
+
+<blockquote>
+<p>cake build                # Builds app
+cake build:module         # Builds the Espresso module
+cake build:client         # Builds client scripts
+cake clean                # Clean module and client
+cake clean:module         # Cleans the Espresso module
+cake clean:client         # Cleans the Espresso module
+cake run                  # Builds and runs the app</p>
+</blockquote>
+
+<h2>Configuration</h2>
+
+<p>There's no configuration for using Angular Espresso, all you need to do is clone/fork the project, install its
+dependencies with npm and run your node app.</p>
+
+<p>Your .coffee files should be under the "app" folder. The structure is the following:</p>
+
+<p>NOTE: Each directory has a README file with more detail</p>
+
+<ul>
+<li>Angular: Your AngularJS app should go in this directory</li>
+<li>Services: Backend logic goes here</li>
+<li>Config: Configuration that may be used to set up different values for a specific environment or a common config</li>
+<li>Routes: This directory should contain the routing functions for your views. Define an entry point for a major
+component of your site and then use partials for all its sub-components</li>
+<li>Resources: Any client scripts not related to AngularJS</li>
+</ul><h2>References</h2>
 
 <p>For more on AngularJS: <a href="http://angularjs.org">http://angularjs.org</a></p>
+
+<p>For more on CoffeeScript: <a href="http://coffeescript.org">http://coffeescript.org</a></p>
 
 <p>For more on Express: <a href="http://expressjs.com">http://expressjs.com</a></p>
 
