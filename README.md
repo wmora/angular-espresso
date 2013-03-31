@@ -4,7 +4,7 @@ Start an app with AngularJS on the client, Express + Node + Socket.IO as your ba
 
 ## Current version
 
-Current version: 0.1.0
+Current version: 0.1.1
 
 This version includes the following components:
 
