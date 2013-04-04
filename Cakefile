@@ -115,7 +115,7 @@ compile = (options, callback) ->
       throw error
     if callback then callback()
 
-deleteEspresso = (callback) ->
+cleanEspresso = (callback) ->
 
   dir = "#{__dirname}/#{ESPRESSO_DIR}"
 
@@ -126,7 +126,7 @@ deleteEspresso = (callback) ->
 
   if callback then callback()
 
-deleteClient = (callback) ->
+cleanClient = (callback) ->
 
   clientDirs = [
       "#{__dirname}/#{PUBLIC_DIR}/#{ANGULAR_APP_OUT}",
@@ -161,6 +161,9 @@ deleteFile = (file) ->
     if err
       throw err
 
+###
+  Tasks
+###
 
 task "build", "Builds app", (callback) ->
   invoke "clean"
@@ -188,11 +191,11 @@ task "clean", "Clean module and client", ->
   invoke "clean:client"
 
 task "clean:module", "Cleans the Espresso module", ->
-  deleteEspresso ->
+  cleanEspresso ->
     console.log "Module cleaned"
 
-task "clean:client", "Cleans the Espresso module", ->
-  deleteClient ->
+task "clean:client", "Cleans the client", ->
+  cleanClient ->
     console.log "Client cleaned"
 
 task "run", "Runs the app", ->
