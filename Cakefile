@@ -1,4 +1,5 @@
 fs = require "fs"
+less = require "less"
 uglifyjs = require "uglify-js"
 
 {print} = require "sys"
@@ -13,6 +14,11 @@ ESPRESSO_DIR = ".espresso"
   Module's index filename. DO NOT MODIFY!
 ###
 ESPRESSO_INDEX = "index.coffee"
+
+###
+  Types of source files. DO NOT MODIFY!
+###
+SOURCES = { COFFEE: "coffee", LESS: "less" }
 
 ###
   Directory where the source code is
@@ -37,50 +43,86 @@ SERVER_FILENAME = "app.coffee"
 ###
   Angular app source folder under APP_DIR
 ###
-ANGULAR_APP_SRC = "angular"
+ANGULAR_APP_SRC = "#{__dirname}/#{APP_DIR}/angular"
 
 ###
   Client files (static resources) output directory. DO NOT MODIFY!
 ###
-PUBLIC_DIR = "public"
+PUBLIC_DIR = "#{__dirname}/public"
 
 ###
   Angular app output folder under PUBLIC_DIR
 ###
-ANGULAR_APP_OUT = "angular"
+ANGULAR_APP_OUT = "#{PUBLIC_DIR}/angular"
 
 ###
   Client scripts source folder other than angular files
 ###
-CLIENT_RESOURCES_SRC = "resources"
+CLIENT_RESOURCES_SRC = "#{APP_DIR}/resources"
 
 ###
   Client scripts output folder other than angular files
 ###
-CLIENT_RESOURCES_OUT = "js"
+CLIENT_RESOURCES_OUT = "#{PUBLIC_DIR}/js"
 
+###
+  Styles source folder
+###
+STYLES_SRC = "#{__dirname}/styles"
 
+###
+  Styles output folder
+###
+STYLES_OUT = "#{PUBLIC_DIR}/styles"
+
+###
+  Compiles all APP_SRC directories and into ESPRESSO_DIR
+###
 buildModule = ->
   options = "-c -b -o"
-  compile "#{options} #{ESPRESSO_DIR}/#{input} #{APP_DIR}/#{input}" for input in APP_SRC
-  compile "#{options} #{ESPRESSO_DIR} #{APP_DIR}/#{ESPRESSO_INDEX}"
+  compile SOURCES.COFFEE, "#{options} #{ESPRESSO_DIR}/#{input} #{APP_DIR}/#{input}" for input in APP_SRC
+  compile SOURCES.COFFEE, "#{options} #{ESPRESSO_DIR} #{APP_DIR}/#{ESPRESSO_INDEX}"
 
+
+###
+  Compiles ESPRESSO_INDEX in the project root
+###
 buildServer = ->
   options = "-c -b"
-  compile "#{options} #{SERVER_FILENAME}"
+  compile SOURCES.COFFEE, "#{options} #{SERVER_FILENAME}"
 
+###
+  Compiles and uglifies client dirs
+###
 buildClient = ->
 
   clientDirs = [
-    { output: "#{__dirname}/#{PUBLIC_DIR}/#{ANGULAR_APP_OUT}", input: "#{__dirname}/#{APP_DIR}/#{ANGULAR_APP_SRC}"}
-    { output: "#{__dirname}/#{PUBLIC_DIR}/#{CLIENT_RESOURCES_OUT}", input: "#{__dirname}/#{APP_DIR}/#{CLIENT_RESOURCES_SRC}"}
+    {
+      type: SOURCES.COFFEE,
+      output: "#{ANGULAR_APP_OUT}",
+      input: "#{ANGULAR_APP_SRC}"
+    },
+    {
+      type: SOURCES.COFFEE,
+      output: "#{CLIENT_RESOURCES_OUT}",
+      input: "#{CLIENT_RESOURCES_SRC}"
+    },
+    {
+      type: SOURCES.LESS,
+      output: "#{STYLES_OUT}",
+      input: "#{STYLES_SRC}"
+    }
   ]
 
   for dir in clientDirs
     do (dir) ->
-      compile "-c -b -o #{dir.output} #{dir.input}", ->
+      compile SOURCES.COFFEE, "-c -b -o #{dir.output} #{dir.input}", ->
         uglifyDirectory dir.output
 
+###
+  Uglifies a directory
+  @dir - Directory to be uglified
+###
 uglifyDirectory = (dir) ->
 
   console.log "Uglifying #{dir}"
@@ -97,6 +139,10 @@ uglifyDirectory = (dir) ->
             else
               uglifyFile "#{dir}/#{file}"
 
+###
+  Uglifies a file
+  @file - File to be uglified
+###
 uglifyFile = (file) ->
 
   result = uglifyjs.minify "#{file}"
@@ -107,14 +153,9 @@ uglifyFile = (file) ->
       throw err
     console.log "#{file} uglified"
 
-
-compile = (options, callback) ->
-  exec "coffee #{options}", {}, (error, stdout, stderr) ->
-    if error
-      console.log stderr.toString()
-      throw error
-    if callback then callback()
-
+###
+  Deletes ESPRESSO_DIR
+###
 cleanEspresso = (callback) ->
 
   dir = "#{__dirname}/#{ESPRESSO_DIR}"
@@ -126,22 +167,29 @@ cleanEspresso = (callback) ->
 
   if callback then callback()
 
+###
+  Deletes ANGULAR_APP_OUT, CLIENT_RESOURCES_OUT, and STYLES_OUT
+###
 cleanClient = (callback) ->
 
   clientDirs = [
-      "#{__dirname}/#{PUBLIC_DIR}/#{ANGULAR_APP_OUT}",
-      "#{__dirname}/#{PUBLIC_DIR}/#{CLIENT_RESOURCES_OUT}"
+      "#{ANGULAR_APP_OUT}",
+      "#{CLIENT_RESOURCES_OUT}",
+      "#{STYLES_OUT}"
     ]
 
   for dir in clientDirs
     do (dir) ->
       deleteDirectory dir, ->
         fs.rmdir dir, (err) ->
-          if err
-            throw err
+          if err then throw err
 
   if callback then callback()
 
+###
+  Deletes a directory
+  @dir - Directory to be deleted
+###
 deleteDirectory = (dir) ->
 
   fs.readdir dir, (err, files) ->
@@ -156,10 +204,26 @@ deleteDirectory = (dir) ->
           else
             deleteFile "#{dir}/#{file}"
 
+###
+  Deletes a file
+  @file - File to be deleted
+###
 deleteFile = (file) ->
   fs.unlink file, (err) ->
     if err
       throw err
+
+###
+  Executes a compilation command
+  @type - Type of source (SOURCES.COFFEE or SOURCES.LESS)
+  @options - Command options
+###
+compile = (type, options, callback) ->
+  exec "coffee #{options}", {}, (error, stdout, stderr) ->
+    if error
+      console.log stderr.toString()
+      throw error
+    if callback then callback()
 
 ###
   Tasks
