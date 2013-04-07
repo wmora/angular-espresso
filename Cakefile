@@ -1,5 +1,4 @@
 fs = require "fs"
-less = require "less"
 uglifyjs = require "uglify-js"
 
 {print} = require "sys"
@@ -71,9 +70,14 @@ CLIENT_RESOURCES_OUT = "#{PUBLIC_DIR}/js"
 STYLES_SRC = "#{__dirname}/styles"
 
 ###
+  Styles output filename
+###
+STYLES_NAME = "espresso.css"
+
+###
   Styles output folder
 ###
-STYLES_OUT = "#{PUBLIC_DIR}/styles"
+STYLES_OUT = "#{PUBLIC_DIR}/styles/#{STYLES_NAME}"
 
 ###
   Compiles all APP_SRC directories and into ESPRESSO_DIR
@@ -116,8 +120,12 @@ buildClient = ->
 
   for dir in clientDirs
     do (dir) ->
-      compile SOURCES.COFFEE, "-c -b -o #{dir.output} #{dir.input}", ->
-        uglifyDirectory dir.output
+      switch dir.type
+        when SOURCES.COFFEE
+          compile dir.type, "-c -b -o #{dir.output} #{dir.input}", ->
+            uglifyDirectory dir.output
+        when SOURCES.LESS
+          compile dir.type, "-x #{dir.input}/* > #{dir.output}"
 
 ###
   Uglifies a directory
@@ -219,16 +227,23 @@ deleteFile = (file) ->
   @options - Command options
 ###
 compile = (type, options, callback) ->
-  exec "coffee #{options}", {}, (error, stdout, stderr) ->
-    if error
-      console.log stderr.toString()
-      throw error
-    if callback then callback()
+  switch type
+    when SOURCES.COFFEE
+      exec "coffee #{options}", {}, (error, stdout, stderr) ->
+        if error
+          console.log stderr.toString()
+          throw error
+        if callback then callback()
+    when SOURCES.LESS
+      exec "lessc #{options}", {}, (error, stdout, stderr) ->
+        if error
+          console.log stderr.toString()
+          throw error
+        if callback then callback()
 
 ###
   Tasks
 ###
-
 task "build", "Builds app", (callback) ->
   invoke "clean"
   console.log "Building module..."
