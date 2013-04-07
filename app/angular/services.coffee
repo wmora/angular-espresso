@@ -7,7 +7,7 @@
 socketServer = document.domain
 
 angular.module("myApp.services", [])
-.value("version", "0.2.0")
+.value("version", "0.2.1")
 .factory("Socket",
   ["$rootScope",
     ($rootScope) ->
