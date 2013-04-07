@@ -77,7 +77,7 @@ STYLES_NAME = "espresso.css"
 ###
   Styles output folder
 ###
-STYLES_OUT = "#{PUBLIC_DIR}/styles/#{STYLES_NAME}"
+STYLES_OUT = "#{PUBLIC_DIR}/styles"
 
 ###
   Compiles all APP_SRC directories and into ESPRESSO_DIR
@@ -125,7 +125,7 @@ buildClient = ->
           compile dir.type, "-c -b -o #{dir.output} #{dir.input}", ->
             uglifyDirectory dir.output
         when SOURCES.LESS
-          compile dir.type, "-x #{dir.input}/* > #{dir.output}"
+          compile dir.type, "-x #{dir.input}/*.less > #{dir.output}/#{STYLES_NAME}"
 
 ###
   Uglifies a directory
