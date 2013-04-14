@@ -235,15 +235,11 @@ compile = (type, options, callback) ->
           throw error
         if callback then callback()
     when SOURCES.LESS
-      exec "mkdir -p #{STYLES_OUT}", {}, (error, stdout, stderr) ->
+      exec "lessc #{options}", {}, (error, stdout, stderr) ->
         if error
           console.log stderr.toString()
           throw error
-        exec "lessc #{options}", {}, (error, stdout, stderr) ->
-          if error
-            console.log stderr.toString()
-            throw error
-          if callback then callback()
+        if callback then callback()
 
 ###
   Tasks
