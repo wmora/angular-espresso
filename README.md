@@ -4,7 +4,7 @@ Start an app with AngularJS on the client, Express + Node + Socket.IO as your ba
 
 ## Current version
 
-Current version: 0.2.1
+Current version: 0.2.2
 
 This version includes the following components:
 
@@ -21,10 +21,9 @@ This version includes the following components:
 You need to have installed node (http://nodejs.org/), CoffeeScript (http://coffeescript.org/), make sure
 you install CoffeeScript globally. You also need LESS (http://lesscss.org/).
 
-Once you have them installed, extract the downloaded file, go to the directory it was extracted to and run:
-```
-npm install
-```
+Once you have them installed, extract the downloaded file, go to the directory it was extracted to and execute
+setup.sh or setup.bat (depending on your OS):
+
 ## Cakefile Usage
 
 Once you install the dependencies, use the Cakefile for performing different actions:
@@ -40,11 +39,11 @@ cake run                  # Runs the app (you should build first)
 The typical usage would be:
 ```
 cake build
-cake run
+node app # or cake run
 ```
 ## Configuration
 
-There's no configuration for using Angular Espresso, all you need to do is clone/fork the project, install its
+There's no configuration for using Angular Espresso, all you need to do is download the project, install its
 dependencies with npm and run your node app.
 
 Your .coffee files should be under the "app" folder. The project structure is the following:
