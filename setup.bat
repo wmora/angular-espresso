@@ -2,11 +2,11 @@ echo "Installing node modules..."
 npm install
 
 echo "Setting up required folders..."
-mkdir public/styles
+mkdir public\styles
 
 echo "Removing unnecessary stuff..."
-rm .gitignore
-rm README.md
+del .gitignore
+del README.md
 
 echo "Building project..."
 cake build
