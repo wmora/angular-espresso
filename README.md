@@ -67,10 +67,10 @@ In the future, I will be adding support for testing. I won't implement file watc
 
 ## Contribute
 If you want to help, fork/clone/share the project, suggest new features, and/or submit pull requests.
-Contact me directly at william.r.mora@gmail.com or @wilmor24.
+Contact me directly at william.r.mora@gmail.com or [@_williammora](https://twitter.com/_williammora).
 
 ## Author
-William Mora - @wilmor24 - http://www.williammora.com
+William Mora - [@_williammora](https://twitter.com/_williammora) - http://www.williammora.com
 
 ## References
 
