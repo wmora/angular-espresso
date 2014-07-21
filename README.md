@@ -4,22 +4,24 @@ Start an app with AngularJS on the client, Express + Node + Socket.IO as your ba
 
 ## Current version
 
-Current version: 0.2.2
+Current version: 0.3.0
 
 This version includes the following components:
 
-* AngularJS 1.0.5
-* Twitter Bootstrap 2.3.1
-* Express 3.1.0
-* LESS 1.3.3
-* Socket.IO 0.9.14, client 0.9.11
-* Jade 0.28.2
-* UglifyJS 2.2.5
+* AngularJS 1.2.20
+* Twitter Bootstrap 3.2.0
+* Express 4.6.1
+* LESS 1.7.3
+* Socket.IO 1.0.6
+* Jade 1.4.2
+* UglifyJS 2.4.15
+* Body Parser 1.4.3
+* Serve Favicon 2.0.1
 
 ## Installation
 
-You need to have installed node (http://nodejs.org/), CoffeeScript (http://coffeescript.org/), make sure
-you install CoffeeScript globally. You also need LESS (http://lesscss.org/).
+You need to have installed [node](http://nodejs.org/), [CoffeeScript](http://coffeescript.org/), make sure
+you install CoffeeScript globally. You also need [LESS](http://lesscss.org/).
 
 Once you have them installed, extract the downloaded file, go to the directory it was extracted to and execute
 setup.sh or setup.bat (depending on your OS):
@@ -67,7 +69,7 @@ In the future, I will be adding support for testing. I won't implement file watc
 
 ## Contribute
 If you want to help, fork/clone/share the project, suggest new features, and/or submit pull requests.
-Contact me directly at william.r.mora@gmail.com or [@_williammora](https://twitter.com/_williammora).
+Contact me directly at [william.r.mora@gmail.com](mailto:william.r.mora@gmail.com) or [@_williammora](https://twitter.com/_williammora).
 
 ## Author
 William Mora - [@_williammora](https://twitter.com/_williammora) - http://www.williammora.com
