@@ -1,3 +1,4 @@
+#!/bin/sh
 echo "Installing node modules..."
 npm install
 
