@@ -1,7 +1,7 @@
 {
   "name": "angular-espresso",
   "description": "A project template for an AngularJS app with an Express, Socket.IO backend written in CoffeeScript",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/wmora/angular-espresso.git"
@@ -20,10 +20,12 @@
     "socket.io"
   ],
   "dependencies": {
-    "express": "3.1.1",
-    "jade": "0.28.2",
-    "socket.io": "0.9.14",
-    "uglify-js": "2.2.5"
+    "express": "4.6.1",
+    "jade": "1.4.2",
+    "socket.io": "1.0.6",
+    "uglify-js": "2.4.15",
+    "body-parser": "1.4.3",
+    "serve-favicon": "2.0.1"
   },
   "engines": {
     "node": ">=0.8"

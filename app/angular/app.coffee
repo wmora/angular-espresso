@@ -4,7 +4,7 @@
   Declare app level module which depends on filters, services, and directives
 ###
 
-angular.module("myApp", ["myApp.filters", "myApp.services", "myApp.directives"])
+angular.module("myApp", ["ngRoute", "myApp.filters", "myApp.services", "myApp.directives"])
 .config ["$routeProvider",
   ($routeProvider) ->
     $routeProvider.when "/home", {templateUrl: "partials/home", controller: UsersCtrl}

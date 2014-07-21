@@ -1,13 +1,14 @@
 extends layout
 
 block content
-  div.hero-unit
+  div.jumbotron
 
     h1 Welcome to Angular Espresso
 
-    div(ng-controller='AppCtrl') Hello, {{name}}
-    span Click on one of the options to test the project
-      ul.nav.nav-pills.nav-stacked
+    div.lead(ng-controller='AppCtrl') Hello, {{name}}
+    span.lead Click on one of the options below to test the project
+      br
+      ul
         li
           a(href='#/home') User listing, details
         li
@@ -19,10 +20,11 @@ block content
       | Angular Espresso, version &nbsp;
       span(app-version)
 
-  script(src='/lib/bootstrap/js/bootstrap.js')
-  script(src='/lib/socket.io/socket.io.js')
-  script(src='/lib/angular/angular.js')
-  script(src='/lib/angular/angular-resource.js')
+  script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
+  script(src='//cdn.socket.io/socket.io-1.0.6.js')
+  script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.js')
+  script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular-resource.min.js')
+  script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular-route.min.js')
   script(src='/angular/app.js')
   script(src='/angular/services.js')
   script(src='/angular/controllers.js')
