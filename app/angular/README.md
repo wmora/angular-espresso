@@ -10,7 +10,7 @@ You can have whatever directory structure you want here, just keep in mind that 
 
 When writing your views, refer to these files as "/angular/filename.js"
 
-For more info, check out AngularJS at http://angularjs.org/
+For more info, check out [AngularJS](http://angularjs.org/)
 
-Yoy might want to read the section "A Note on Minification" in their tutorial at
+You might want to read the section "A Note on Minification" in their tutorial at
 http://docs.angularjs.org/tutorial/step_05
